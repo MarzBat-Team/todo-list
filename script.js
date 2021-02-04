@@ -1,14 +1,12 @@
 function onSubmit() {
     const list = document.getElementById('list');
+    const text = document.getElementById('text').value;
 
     const li = Array.from(list.getElementsByTagName('li'));
 
-    li.shift();
+    list.innerHTML = `<li>${text}</li>`;
+    for (let index = 0; index < li.length; index++) {
+        list.innerHTML = list.innerHTML + `<li>${li[index].innerHTML}</li>`;
+    }
 
-    list.innerHTML = `
-        <li>${li[0].innerHTML}</li>
-        <li>${li[1].innerHTML}</li>
-        <li>${li[2].innerHTML}</li>
-        <li>${li[3].innerHTML}</li>
-    `;
 }
