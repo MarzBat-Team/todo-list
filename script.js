@@ -29,6 +29,25 @@ function onSubmit() {
 function finishTask(event) {
     // Pega o id do element anterior ao botão
     const id = event.target.parentElement.id;
+    // Pegar o elemento pelo id
+    const finishTaskLi = document.getElementById(id)
+
+    finishTaskLi.getElementsByTagName('button')[0].remove()
+
+    // Pega a referência da lista
+    const finishList = document.getElementById('finish-list');
+
+    // Converte a lista para array
+    const finishLi = Array.from(finishList.getElementsByTagName('li'));
+
+    // Adiciona novo item no início da lista
+    finishList.innerHTML = `<li>${finishTaskLi.innerText}</li>`;
+
+    // Percorre a lista li
+    for (let index = 0; index < finishLi.length; index++) {
+        // Incrementa a lista concatenando o valor que já existe com o novo
+        finishList.innerHTML = finishList.innerHTML + `<li>${finishLi[index].innerHTML}</li>`;
+    }
 
     // Remove o elemento
     document.getElementById(id).remove();
